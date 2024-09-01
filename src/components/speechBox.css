@@ -1,5 +1,6 @@
 .speechBox {
     display: flex;
+    align-items: center;
     gap: 10px;
     position: relative;
     width: min-content;
@@ -8,8 +9,14 @@
 }
 
 .speechText {
+    display: flex;
+    flex-direction: column;
     width: 60ch;
     border: 2px solid black;
+}
+
+.speechText *::selection {
+    background: none;
 }
 
 .speechBox button {
@@ -27,5 +34,7 @@
 }
 
 .speechBox img {
-    height: 100%;
+    width: 75px;
+    height: 75px;
+    object-fit: contain;
 }
