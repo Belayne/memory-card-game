@@ -41,7 +41,7 @@ const dialogue = [
     {
         name: "Rick",
         lines: [
-            'IDK YET.'
+            'Just click the damn cards and stop whining Morty.'
         ],
         image: "https://pngimg.com/d/rick_morty_PNG28.png"
     },
