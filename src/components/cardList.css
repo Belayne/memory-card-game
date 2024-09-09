@@ -1,7 +1,9 @@
 .cards {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
     gap: 10px;
+    justify-items: center;
     justify-content: center;
     width: 80%;
+    grid-column: 1/3;
 }

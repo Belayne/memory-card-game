@@ -44,7 +44,7 @@ const dialogue = [
             'Just click the damn cards and stop whining Morty.'
         ],
         image: "https://pngimg.com/d/rick_morty_PNG28.png"
-    },
+    }
 ]
 
 export default function SpeechBox() {
@@ -99,7 +99,6 @@ export default function SpeechBox() {
                 <p><b>{dialogue[turn].name}</b></p>
                 <p>{text}</p>
             </div>
-            <button>Close</button>
         </div>
     )
 }
