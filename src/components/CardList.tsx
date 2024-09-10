@@ -2,6 +2,7 @@ import { useState, useEffect} from "react";
 import Card from "./Card";
 import { getCharacters } from "rickmortyapi";
 import "./cardList.css"
+import Throbber from "./Throbber";
 
 interface CharacterData {
     imageUrl: string,
@@ -11,7 +12,8 @@ interface CharacterData {
 interface CardListProps {
     listLength: number,
     resetScore: Function,
-    increaseScore: Function
+    increaseScore: Function,
+    endGame: Function
 }
 
 interface CardState extends CharacterData{
@@ -32,16 +34,18 @@ async function getCharacterData(name: string = "rick"):Promise<any> {
     }
 }
 
-export default function CardList({listLength, resetScore, increaseScore}: CardListProps) {
+export default function CardList({listLength, resetScore, increaseScore, endGame}: CardListProps) {
     const [cards, setCards] = useState<CardState[]>([]);
+    const [ready, setReady] = useState(false);
 
     useEffect(() => {
-        getCharacterData("Rick").then(result => {
+        getCharacterData("Morty").then(result => {
             const newCards: CardState[] = [];
             for(let i = 0; i < listLength; i++) {
                 newCards.push({...result[i], clicked: false, id: i + ""})
             }
-            setCards(newCards)
+            setCards(newCards);
+            setReady(true);
         })
     }, [])
 
@@ -75,6 +79,9 @@ export default function CardList({listLength, resetScore, increaseScore}: CardLi
         else {
             increaseScore();
             setClicked(cardID);
+            if(cards.every(card => card.clicked === true)) {
+                endGame();
+            }
             shuffle();
         }
     }
@@ -89,7 +96,10 @@ export default function CardList({listLength, resetScore, increaseScore}: CardLi
 
     return (
         <div className="cards">
-            {cards.map(card => <Card key={card.id} id={card.id} imgSrc={card.imageUrl} name = {card.name} handleClick={handleClick}></Card>)}
+            {
+            ready? cards.map(card => <Card key={card.id} id={card.id} imgSrc={card.imageUrl} name = {card.name} handleClick={handleClick}></Card>):
+            <Throbber></Throbber>   
+            }
         </div>
     )
 }

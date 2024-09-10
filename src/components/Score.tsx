@@ -1,3 +1,4 @@
+import "./score.css"
 
 interface ScoreProps {
     currentScore: number,
@@ -6,7 +7,7 @@ interface ScoreProps {
 
 export default function Score({currentScore, maxScore}: ScoreProps) {
     return (
-        <div>
+        <div className="score">
             <p>{currentScore} / {maxScore}</p>
         </div>
     )

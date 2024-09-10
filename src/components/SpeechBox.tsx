@@ -1,53 +1,7 @@
 import "./speechBox.css";
 import { useState, useEffect, useRef} from "react";
 
-
-const dialogue = [
-    {
-        name: "Rick",
-        lines: [
-            `Alright, Morty, pay attention—this game’s as simple as it gets.`,
-            `You see those cards?`,
-            `Your job is to click on ‘em.`,
-            `But only the ones you haven’t clicked before.`
-        ],
-        image: "https://pngimg.com/d/rick_morty_PNG28.png"
-    },
-    {
-        name: "Morty",
-        lines: [
-            "Wait, Rick, that’s it? Just click the cards?"
-        ],
-        image: "https://e7.pngegg.com/pngimages/776/370/png-clipart-morty-smith-amazon-com-computer-mouse-mouse-mats-rick-sanchez-skin-electronics-face-thumbnail.png"
-    },
-    {
-        name: "Rick",
-        lines: [
-            `Exactly!`,
-            `Each new card you click boosts your score.`,
-            `But if you click one twice, it’s all over, Morty.`,
-            `No second chances, no retries.`,
-            'Just kaboom—world’s done for.'
-        ],
-        image: "https://pngimg.com/d/rick_morty_PNG28.png"
-    },
-    {
-        name: "Morty",
-        lines: [
-            `Why does it always have to be so stressful, Rick?!`,
-        ],
-        image: "https://e7.pngegg.com/pngimages/776/370/png-clipart-morty-smith-amazon-com-computer-mouse-mouse-mats-rick-sanchez-skin-electronics-face-thumbnail.png"
-    },
-    {
-        name: "Rick",
-        lines: [
-            'Just click the damn cards and stop whining Morty.'
-        ],
-        image: "https://pngimg.com/d/rick_morty_PNG28.png"
-    }
-]
-
-export default function SpeechBox() {
+export default function SpeechBox({dialogue}: any) {
 
     const [text, setText] = useState<string>("");
     const [turn, setTurn] = useState<number>(0);
